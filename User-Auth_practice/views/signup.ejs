@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head", {title: "AUTH"}) %>
+  </head>
+  <body>
+    <%- include("includes/header") %>
+
+    <main>
+      <h3 class="mb-4">Please fill the sign-up form.</h3>
+
+      <% if(sessionData.hasError) {%>
+        <p class="alert alert-danger" role="alert"><%= sessionData.message %></p>
+      <% } %>  
+      
+      <form action="/signup" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+            value="<%= sessionData.email %> "
+            required
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Confirm Email address</label
+          >
+          <input
+            type="confirm-email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="confirm-email"
+            value="<%=sessionData.confirmEmail%>"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password"
+            value="<%= sessionData.password %>"
+            required
+          />
+        </div>
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </main>
+  </body>
+</html>
